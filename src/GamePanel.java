@@ -5,6 +5,8 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
 
+import static utilz.Constants.PlayerConstants.*;
+
 public class GamePanel extends JPanel {
 
     public int xDelta = 0;
@@ -17,6 +19,7 @@ public class GamePanel extends JPanel {
     BufferedImage[][] animations;
 
     private int frames = 0, animationTick, animationIndex, animationSpeed = 20;
+    private int playerAction = FIGHT_RIGHT;
 
 
     public GamePanel() {
@@ -29,7 +32,7 @@ public class GamePanel extends JPanel {
     }
 
     private void importImage() {
-        InputStream is = getClass().getResourceAsStream("/geslerSprites.png");
+        InputStream is = getClass().getResourceAsStream("/gesler.png");
         try {
             geslerImage = ImageIO.read(is);
         } catch (IOException e) {
@@ -41,7 +44,7 @@ public class GamePanel extends JPanel {
                 throw new RuntimeException(e);
             }
         }
-        InputStream is2 = getClass().getResourceAsStream("/Dude_Monster_Walk_6.png");
+        InputStream is2 = getClass().getResourceAsStream("/refugee.png");
         try {
             dude_image = ImageIO.read(is2);
         } catch (IOException e) {
@@ -56,18 +59,18 @@ public class GamePanel extends JPanel {
     }
 
     private void setPanelSize() {
-        Dimension size = new Dimension(1280, 1024);
+        Dimension size = new Dimension(480, 320);
         setPreferredSize(size);
     }
 
     private void loadAnimations() {
-        animations = new BufferedImage[2][6];
+        animations = new BufferedImage[2][GetSpritesAmount(playerAction)];
         for (int j = 0; j < animations.length; j++) {
             for (int i = 0; i < animations[j].length; i++) {
                 if (j == 0) {
-                    animations[j][i] = geslerImage.getSubimage(i * 32, 7 * 32, 32, 32);
+                    animations[j][i] = geslerImage.getSubimage(i * 64, playerAction * 64, 64, 64);
                 } else if (j == 1) {
-                    animations[j][i] = dude_image.getSubimage(i * 32, 0, 32, 32);
+                    animations[j][i] = dude_image.getSubimage(i * 64, playerAction * 64, 64, 64);
                 }
             }
         }
@@ -77,9 +80,8 @@ public class GamePanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         updateAnimationTick();
-        g.drawImage(animations[0][animationIndex], xDelta + 0, yDelta + 0, 32, 32, null);
-        g.drawImage(animations[1][animationIndex], xDelta + 50, yDelta + 50, 64, 64, null);
-
+        g.drawImage(animations[0][animationIndex], xDelta + 60, yDelta + 30, 256, 256, null);
+        //g.drawImage(animations[1][animationIndex], xDelta + 50, yDelta + 50, 128, 128, null);
     }
 
     private void updateAnimationTick() {
@@ -87,7 +89,7 @@ public class GamePanel extends JPanel {
         if (animationTick > animationSpeed) {
             animationTick = 0;
             animationIndex++;
-            if (animationIndex >= 6) {
+            if (animationIndex >= GetSpritesAmount(playerAction)) {
                 animationIndex = 0;
             }
         }
