@@ -30,10 +30,15 @@ public class Constants {
 
         public static final int DYING = 20;
 
+        public static final int ATTACK_ROD_UP = 21;
+        public static final int ATTACK_ROD_LEFT = 22;
+        public static final int ATTACK_ROD_DOWN = 23;
+        public static final int ATTACK_ROD_RIGHT = 24;
+
 
         public static int GetSpritesAmount(int playerAction) {
             switch (playerAction) {
-                case OPEN_DOORS_DOWN, OPEN_DOORS_RIGHT, OPEN_DOORS_lEFT, OPEN_DOORS_UP,DYING -> {
+                case OPEN_DOORS_DOWN, OPEN_DOORS_RIGHT, OPEN_DOORS_lEFT, OPEN_DOORS_UP, DYING -> {
                     return 6;
                 }
                 case CAST_MAGIC_DOWN, CAST_MAGIC_LEFT, CAST_MAGIC_RIGHT, CAST_MAGIC_UP -> {
@@ -45,7 +50,7 @@ public class Constants {
                 case WALKING_DOWN, WALKING_UP, WALKING_LEFT, WALKING_RIGHT -> {
                     return 9;
                 }
-                case FIGHT_UP, FIGHT_DOWN, FIGHT_RIGHT, FIGHT_LEFT -> {
+                case FIGHT_UP, FIGHT_DOWN, FIGHT_RIGHT, FIGHT_LEFT, ATTACK_ROD_UP, ATTACK_ROD_DOWN, ATTACK_ROD_LEFT, ATTACK_ROD_RIGHT -> {
                     return 13;
                 }
                 default -> {
