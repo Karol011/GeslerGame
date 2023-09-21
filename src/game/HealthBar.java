@@ -16,8 +16,7 @@ public class HealthBar {
     private BufferedImage[] healthBarImage;
     public Entity entity;
 
-    public HealthBar(GamePanel gamePanel, Entity entity) {
-        this.gamePanel = gamePanel;
+    public HealthBar(Entity entity) {
         this.entity = entity;
         loadHealthBarImages();
     }

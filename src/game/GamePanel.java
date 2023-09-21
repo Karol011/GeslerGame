@@ -17,7 +17,7 @@ public class GamePanel extends JPanel {
     public Refugee refugee = new Refugee(this, 300, 300);
     private long lastCheck = 0;
     private Game game;
-    public HealthBar healthBar = new HealthBar(this, gesler);
+
 
 
     public GamePanel(Game game) {
@@ -50,7 +50,6 @@ public class GamePanel extends JPanel {
         gesler.render(g);
         refugee.update();
         refugee.render(g);
-        healthBar.render(g);
     }
 
 
