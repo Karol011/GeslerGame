@@ -1,10 +1,12 @@
 package game;
 
 import Entity.Gesler;
+import Entity.Refugee;
 
 
 import javax.swing.*;
 import java.awt.*;
+
 
 import static game.Game.GAME_HEIGHT;
 import static game.Game.GAME_WIDTH;
@@ -12,8 +14,10 @@ import static game.Game.GAME_WIDTH;
 public class GamePanel extends JPanel {
 
     public Gesler gesler = new Gesler(50, 50);
+    public Refugee refugee = new Refugee(this, 300, 300);
     private long lastCheck = 0;
     private Game game;
+    public HealthBar healthBar = new HealthBar(this, gesler);
 
 
     public GamePanel(Game game) {
@@ -34,6 +38,7 @@ public class GamePanel extends JPanel {
     private void loadAnimations() {
         game.tilesManager.loadAnimation();
         gesler.loadAnimation();
+        refugee.loadAnimation();
     }
 
     @Override
@@ -43,6 +48,9 @@ public class GamePanel extends JPanel {
         game.tilesManager.render(g);
         gesler.update();
         gesler.render(g);
+        refugee.update();
+        refugee.render(g);
+        healthBar.render(g);
     }
 
 

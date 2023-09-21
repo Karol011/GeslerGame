@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GeslerGame:jar">
+    <output-path>$USER_HOME$/Desktop/gesler</output-path>
+    <root id="archive" name="GeslerGame.jar">
+      <element id="module-output" name="GeslerGame" />
+    </root>
+  </artifact>
+</component>

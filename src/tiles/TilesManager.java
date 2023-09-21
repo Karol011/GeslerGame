@@ -49,10 +49,7 @@ public class TilesManager {
     }
 
     public void render(Graphics g) {
-        // g.drawImage(cityMapTiles[0][1], 0 * game.TILES_SIZE, 0 * game.TILES_SIZE, 64, 64, null);
-        // g.drawImage(cityMapTiles[11][2], 2 * game.TILES_SIZE, 2 * game.TILES_SIZE, 64, 64, null);
-        //  g.drawImage(cityMapTiles[22][3], 4 * game.TILES_SIZE, 4 * game.TILES_SIZE, 64, 64, null);
-  //      g.drawImage(cityMapTiles[17][17], 6 * 16, 6 * 16, 16, 16, null);
+
     }
 
     public void update() {

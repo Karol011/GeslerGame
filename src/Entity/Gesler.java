@@ -18,6 +18,7 @@ public class Gesler extends Entity {
     private BufferedImage[][] attackAnimations;
     public boolean moving = false;
     public boolean attacking = false;
+    public Hitbox hitbox;
 
     public Enum<Direction> direction = Direction.DOWN;
     private int frames = 0, animationTick, animationIndex, animationSpeed = 10;
@@ -25,6 +26,7 @@ public class Gesler extends Entity {
 
     public Gesler(int positionX, int positionY) {
         super(positionX, positionY);
+        hitbox = new Hitbox(this, this.positionX, this.positionY, this.width, this.height);
         loadAnimation();
     }
 
@@ -34,7 +36,8 @@ public class Gesler extends Entity {
 
 
     public void render(Graphics g) {
-        g.drawImage(animations[playerAction][animationIndex], super.positionX + 111, super.positionY + 130, this.width, this.height, null);
+        g.drawImage(animations[playerAction][animationIndex], super.positionX, super.positionY, this.width, this.height, null);
+        this.hitbox.displayHitbox(g, super.positionX, super.positionY);
     }
 
     private void setAnimation() {
