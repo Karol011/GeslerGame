@@ -3,6 +3,8 @@ package Entity;
 import game.HealthBar;
 import utilz.Health;
 
+import java.awt.*;
+
 public abstract class Entity {
     public int positionX;
     public int positionY;

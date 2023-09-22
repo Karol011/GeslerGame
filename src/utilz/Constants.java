@@ -3,6 +3,8 @@ package utilz;
 public class Constants {
 
     public static class PlayerConstants {
+        public static final int GESLER_SPEED = 5;
+
         public static final int CAST_MAGIC_UP = 0;
         public static final int CAST_MAGIC_LEFT = 1;
         public static final int CAST_MAGIC_DOWN = 2;

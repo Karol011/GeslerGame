@@ -24,9 +24,15 @@ public class CollisionManager {
             int obj2Bottom = obj2.positionY + obj2.height;
 
             // Check for intersection in x and y axes
-            return obj1Right > obj2Left && obj1Left < obj2Right
-                    && obj1Bottom > obj2Top && obj1Top < obj2Bottom;
+            boolean LTcollision = obj1Left < obj2Right;
+            boolean RTcollision = obj1Right > obj2Left;
+            boolean LDcollision = obj1Bottom > obj2Top;
+            boolean RDcollision = obj1Top < obj2Bottom;
 
+            return obj1Right > obj2Left
+                    && obj1Left < obj2Right
+                    && obj1Bottom > obj2Top
+                    && obj1Top < obj2Bottom;
     }
 
 }

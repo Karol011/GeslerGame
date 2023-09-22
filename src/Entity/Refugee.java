@@ -14,6 +14,7 @@ import static utilz.Constants.PlayerConstants.*;
 
 public class Refugee extends Entity {
 
+
     private BufferedImage refugeeImage;
     private BufferedImage[][] animations;
     public boolean moving = true;
@@ -68,22 +69,25 @@ public class Refugee extends Entity {
     public void moveRandomly() {
         int randomValue = random.nextInt(50) + 1;
         for (int i = 0; i < randomValue; i++) {
-            switch (determineRandomDirection()) {
-                case UP -> {
-                    this.positionY = this.positionY - 1;
-                    gamePanel.refugee.refugeeAction = WALKING_UP;
-                }
-                case DOWN -> {
-                    this.positionY = this.positionY + 1;
-                    gamePanel.refugee.refugeeAction = WALKING_DOWN;
-                }
-                case LEFT -> {
-                    this.positionX = this.positionX - 1;
-                    gamePanel.refugee.refugeeAction = WALKING_LEFT;
-                }
-                case RIGHT -> {
-                    this.positionX = this.positionX + 1;
-                    gamePanel.refugee.refugeeAction = WALKING_RIGHT;
+            boolean geslerAndRefugeeColliding = gamePanel.game.collisionManager.areColliding(gamePanel.gesler, gamePanel.refugee);
+            if (!geslerAndRefugeeColliding) {
+                switch (determineRandomDirection()) {
+                    case UP -> {
+                        this.positionY = this.positionY - 1;
+                        gamePanel.refugee.refugeeAction = WALKING_UP;
+                    }
+                    case DOWN -> {
+                        this.positionY = this.positionY + 1;
+                        gamePanel.refugee.refugeeAction = WALKING_DOWN;
+                    }
+                    case LEFT -> {
+                        this.positionX = this.positionX - 1;
+                        gamePanel.refugee.refugeeAction = WALKING_LEFT;
+                    }
+                    case RIGHT -> {
+                        this.positionX = this.positionX + 1;
+                        gamePanel.refugee.refugeeAction = WALKING_RIGHT;
+                    }
                 }
             }
         }

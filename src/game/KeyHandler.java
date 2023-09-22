@@ -1,10 +1,15 @@
 package game;
 
-import utilz.Constants;
+import utilz.Constants.PlayerConstants.*;
 import utilz.Direction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+//import static utilz.Constants.PlayerConstants.GESLER_SPEED;
+//import static utilz.Constants.PlayerConstants.WALKING_UP;
+import static utilz.Constants.PlayerConstants.*;
+
 
 public class KeyHandler implements KeyListener {
 
@@ -21,45 +26,46 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        if (!gamePanel.game.collisionManager.areColliding(gamePanel.gesler, gamePanel.refugee)) {
+        boolean geslerAndRefugeeColliding = gamePanel.game.collisionManager.areColliding(gamePanel.gesler, gamePanel.refugee);
+        if (!geslerAndRefugeeColliding) {
             switch (e.getExtendedKeyCode()) {
                 case KeyEvent.VK_W -> {
-                    gamePanel.gesler.positionY = gamePanel.gesler.positionY - 5;
+                    gamePanel.gesler.positionY = gamePanel.gesler.positionY - GESLER_SPEED;
                     gamePanel.gesler.direction = Direction.UP;
                     gamePanel.gesler.setMoving(true);
-                    gamePanel.gesler.playerAction = Constants.PlayerConstants.WALKING_UP;
+                    gamePanel.gesler.playerAction = WALKING_UP;
                 }
                 case KeyEvent.VK_S -> {
-                    gamePanel.gesler.positionY = gamePanel.gesler.positionY + 5;
+                    gamePanel.gesler.positionY = gamePanel.gesler.positionY + GESLER_SPEED;
                     gamePanel.gesler.direction = Direction.DOWN;
                     gamePanel.gesler.setMoving(true);
-                    gamePanel.gesler.playerAction = Constants.PlayerConstants.WALKING_DOWN;
+                    gamePanel.gesler.playerAction = WALKING_DOWN;
 
                 }
                 case KeyEvent.VK_A -> {
-                    gamePanel.gesler.positionX = gamePanel.gesler.positionX - 5;
+                    gamePanel.gesler.positionX = gamePanel.gesler.positionX - GESLER_SPEED;
                     gamePanel.gesler.direction = Direction.LEFT;
                     gamePanel.gesler.setMoving(true);
-                    gamePanel.gesler.playerAction = Constants.PlayerConstants.WALKING_LEFT;
+                    gamePanel.gesler.playerAction = WALKING_LEFT;
 
                 }
                 case KeyEvent.VK_D -> {
-                    gamePanel.gesler.positionX = gamePanel.gesler.positionX + 5;
+                    gamePanel.gesler.positionX = gamePanel.gesler.positionX + GESLER_SPEED;
                     gamePanel.gesler.direction = Direction.RIGHT;
                     gamePanel.gesler.setMoving(true);
-                    gamePanel.gesler.playerAction = Constants.PlayerConstants.WALKING_RIGHT;
+                    gamePanel.gesler.playerAction = WALKING_RIGHT;
 
                 }
                 case KeyEvent.VK_SPACE -> {
                     gamePanel.gesler.setAttacking(true);
                     if (gamePanel.gesler.direction.equals(Direction.UP)) {
-                        gamePanel.gesler.playerAction = Constants.PlayerConstants.ATTACK_ROD_UP;
+                        gamePanel.gesler.playerAction = ATTACK_ROD_UP;
                     } else if (gamePanel.gesler.direction.equals(Direction.DOWN)) {
-                        gamePanel.gesler.playerAction = Constants.PlayerConstants.ATTACK_ROD_DOWN;
+                        gamePanel.gesler.playerAction = ATTACK_ROD_DOWN;
                     } else if (gamePanel.gesler.direction.equals(Direction.LEFT)) {
-                        gamePanel.gesler.playerAction = Constants.PlayerConstants.ATTACK_ROD_LEFT;
+                        gamePanel.gesler.playerAction = ATTACK_ROD_LEFT;
                     } else if (gamePanel.gesler.direction.equals(Direction.RIGHT)) {
-                        gamePanel.gesler.playerAction = Constants.PlayerConstants.ATTACK_ROD_RIGHT;
+                        gamePanel.gesler.playerAction = ATTACK_ROD_RIGHT;
                     }
                 }
             }
