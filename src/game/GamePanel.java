@@ -19,7 +19,6 @@ public class GamePanel extends JPanel {
     private Game game;
 
 
-
     public GamePanel(Game game) {
         this.game = game;
         setPanelSize();
@@ -50,6 +49,7 @@ public class GamePanel extends JPanel {
         gesler.render(g);
         refugee.update();
         refugee.render(g);
+        System.out.println(game.collisionManager.areColliding(gesler, refugee));
     }
 
 

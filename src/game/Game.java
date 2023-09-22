@@ -19,6 +19,7 @@ public class Game implements Runnable {
     private GamePanel gamePanel;
     private Thread gameThread;
     public TilesManager tilesManager;
+    public CollisionManager collisionManager;
 
 
     public Game() {
@@ -34,6 +35,7 @@ public class Game implements Runnable {
 
     private void initClasses() {
         tilesManager = new TilesManager(this);
+        collisionManager = new CollisionManager(this);
         gamePanel = new GamePanel(this);
         gameWindow = new GameWindow(gamePanel);
     }
