@@ -11,8 +11,6 @@ import java.io.InputStream;
 import static utilz.Constants.PlayerConstants.*;
 
 public class Gesler extends Entity {
-    private int width = 64;
-    private int height = 64;
     private BufferedImage geslerImage;
     private BufferedImage[][] animations;
     private BufferedImage[][] attackAnimations;
@@ -26,7 +24,6 @@ public class Gesler extends Entity {
 
     public Gesler(int positionX, int positionY) {
         super(positionX, positionY);
-        hitbox = new Hitbox(this, super.positionX, super.positionY, this.width, this.height);
         loadAnimation();
     }
 
@@ -36,9 +33,9 @@ public class Gesler extends Entity {
 
 
     public void render(Graphics g) {
-        g.drawImage(animations[playerAction][animationIndex], super.positionX, super.positionY, this.width, this.height, null);
         this.hitbox.displayHitbox(g, super.positionX, super.positionY);
         this.healthBar.render(g);
+        g.drawImage(animations[playerAction][animationIndex], super.positionX, super.positionY, super.width, super.height, null);
     }
 
     private void setAnimation() {
@@ -78,7 +75,7 @@ public class Gesler extends Entity {
                 int yValueAfter21Row = ((21 * 64) + ((j - 21) * 128)); //After 21 row size of the subimage changes from 64x64 to 128x128, so it needs to change accordingly
                 for (int i = 0; i < animations[j].length; i++) {
                     if (j < 21) {
-                        animations[j][i] = geslerImage.getSubimage(i * this.width, j * this.height, 64, 64);
+                        animations[j][i] = geslerImage.getSubimage(i * super.width, j * super.height, 64, 64);
                     } else if (j >= 21) {
                         animations[j][i] = geslerImage.getSubimage((i * 128), yValueAfter21Row, 128, 128);
                     }

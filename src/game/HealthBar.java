@@ -22,7 +22,7 @@ public class HealthBar {
     }
 
     public void render(Graphics g) {
-        g.drawImage(healthBarImage[1], (this.entity.positionX + this.entity.width), (this.entity.positionY + this.entity.height), 60, 20, null);
+        g.drawImage(healthBarImage[entity.healthPoints.getHealthPoints()], (this.entity.positionX + 2), (this.entity.positionY - 5), 60, 20, null);
     }
 
     private void loadHealthBarImages() {

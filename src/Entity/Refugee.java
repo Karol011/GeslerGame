@@ -1,7 +1,6 @@
 package Entity;
 
 import game.GamePanel;
-import utilz.Constants;
 import utilz.Direction;
 
 import javax.imageio.ImageIO;
@@ -15,8 +14,6 @@ import static utilz.Constants.PlayerConstants.*;
 
 public class Refugee extends Entity {
 
-    private int width = 64;
-    private int height = 64;
     private BufferedImage refugeeImage;
     private BufferedImage[][] animations;
     public boolean moving = true;
@@ -42,6 +39,8 @@ public class Refugee extends Entity {
 
 
     public void render(Graphics g) {
+        this.hitbox.displayHitbox(g, super.positionX, super.positionY);
+        this.healthBar.render(g);
         g.drawImage(animations[refugeeAction][animationIndex], super.positionX, super.positionY, this.width, this.height, null);
     }
 
