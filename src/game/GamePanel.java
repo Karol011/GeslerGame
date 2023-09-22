@@ -16,7 +16,7 @@ public class GamePanel extends JPanel {
     public Gesler gesler = new Gesler(50, 50);
     public Refugee refugee = new Refugee(this, 300, 300);
     private long lastCheck = 0;
-    private Game game;
+    public Game game;
 
 
     public GamePanel(Game game) {
