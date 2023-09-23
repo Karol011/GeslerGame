@@ -70,29 +70,52 @@ public class Refugee extends Entity {
         int randomValue = random.nextInt(50) + 1;
         for (int i = 0; i < randomValue; i++) {
             boolean geslerAndRefugeeColliding = gamePanel.game.collisionManager.areColliding(gamePanel.gesler, gamePanel.refugee);
-            if (!geslerAndRefugeeColliding) {
-                switch (determineRandomDirection()) {
-                    case UP -> {
+
+            switch (determineRandomDirection()) {
+                case UP -> {
+                    if (!geslerAndRefugeeColliding) {
                         this.positionY = this.positionY - 1;
                         gamePanel.refugee.refugeeAction = WALKING_UP;
-                    }
-                    case DOWN -> {
+                    } else {
                         this.positionY = this.positionY + 1;
                         gamePanel.refugee.refugeeAction = WALKING_DOWN;
                     }
-                    case LEFT -> {
+                }
+                case DOWN -> {
+                    if (!geslerAndRefugeeColliding) {
+                        this.positionY = this.positionY + 1;
+                        gamePanel.refugee.refugeeAction = WALKING_DOWN;
+                    }
+                    else {
+                        this.positionY = this.positionY - 1;
+                        gamePanel.refugee.refugeeAction = WALKING_UP;
+                    }
+                }
+                case LEFT -> {
+                    if (!geslerAndRefugeeColliding) {
                         this.positionX = this.positionX - 1;
                         gamePanel.refugee.refugeeAction = WALKING_LEFT;
                     }
-                    case RIGHT -> {
+                    else {
+                        this.positionY = this.positionY - 1;
+                        gamePanel.refugee.refugeeAction = WALKING_RIGHT;
+                    }
+                }
+                case RIGHT -> {
+                    if (!geslerAndRefugeeColliding) {
                         this.positionX = this.positionX + 1;
                         gamePanel.refugee.refugeeAction = WALKING_RIGHT;
+                    }
+                    else {
+                        this.positionY = this.positionY - 1;
+                        gamePanel.refugee.refugeeAction = WALKING_LEFT;
                     }
                 }
             }
         }
-
     }
+
+
 
 
     private Direction determineRandomDirection() {
