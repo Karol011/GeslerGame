@@ -97,7 +97,7 @@ public class Refugee extends Entity {
                         gamePanel.refugee.refugeeAction = WALKING_LEFT;
                     }
                     else {
-                        this.positionY = this.positionY - 1;
+                        this.positionX = this.positionX + 1;
                         gamePanel.refugee.refugeeAction = WALKING_RIGHT;
                     }
                 }
@@ -107,7 +107,7 @@ public class Refugee extends Entity {
                         gamePanel.refugee.refugeeAction = WALKING_RIGHT;
                     }
                     else {
-                        this.positionY = this.positionY - 1;
+                        this.positionX = this.positionX - 1;
                         gamePanel.refugee.refugeeAction = WALKING_LEFT;
                     }
                 }
