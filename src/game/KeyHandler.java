@@ -26,6 +26,10 @@ public class KeyHandler implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
+        handleGeslerMovementAndActions(e);
+    }
+
+    private void handleGeslerMovementAndActions(KeyEvent e) {
         boolean geslerAndRefugeeColliding = gamePanel.game.collisionManager.areColliding(gamePanel.gesler, gamePanel.refugee);
 
         switch (e.getExtendedKeyCode()) {
@@ -76,7 +80,6 @@ public class KeyHandler implements KeyListener {
             }
         }
     }
-
 
 
     @Override

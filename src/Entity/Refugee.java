@@ -118,6 +118,8 @@ public class Refugee extends Entity {
 
 
 
+
+
     private Direction determineRandomDirection() {
         Direction direction;
         int randomValue = random.nextInt(100) + 1;
